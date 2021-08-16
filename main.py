@@ -9,8 +9,8 @@ import random
 
 
 class SLGAME:
-    
-    ## Pre Define Messages used in this Game...!
+
+    # Pre Define Messages used in this Game...!
 
     WELCOME = "====== Welcome To Snakes and ladders ======"
     RULE = "Minimum 2 players and maximum 4 players can play this game."
@@ -26,33 +26,31 @@ class SLGAME:
     BYE = "Thank You For Playing This Game."
     SNAKES = {47: 5, 29: 9, 38: 15, 53: 33, 62: 57, 92: 70}
     LADDER = {2: 23, 8: 34, 20: 77, 32: 68, 41: 79, 74: 88, 85: 95, 82: 100}
-    
-    ##  __init__(): are used to initialize the object’s state...!
 
-    def __init__(self, players_count= 0, players_name=[], players_pos=[], winners=[], decision=False, turn=0):
+    # __init__(): are used to initialize the object’s state...!
+
+    def __init__(self, players_count=0, players_name=[], players_pos=[], winners=[], decision=False, turn=0):
         self.players_count = players_count
         self.players_name = players_name
         self.players_pos = players_pos
         self.winners = winners
         self.decision = decision
         self.turn = turn
-    
-    ## input(self): are used to take input from the user and check its int or not work according to input type...!
+
+    # input(self): are used to take input from the user and check its int or not work according to input type...!
 
     def input(self):
         try:
-         self.players_count = int(input("How many players want to play.?"))
+            self.players_count = int(input("How many players want to play.?"))
         except ValueError:
-         print("Please input integer only...")
-         self.input()
-         
+            print("Please input integer only...")
+            self.input()
 
-    ## getInput(self): are used to take input Name and no. of player to play from the user and  work according to input and condition...!
+    # getInput(self): are used to take input Name and no. of player to play from the user and  work according to input and condition...!
 
     def getInput(self):
-        
+
         self.input()
-         
 
         if self.players_count > 1 and self.players_count <= 4:
             for x in range(self.players_count):
@@ -60,8 +58,8 @@ class SLGAME:
             self.players_pos = [0] * self.players_count
         else:
             return False
-      
-    ## winner(self, name, i): are used to display winner...!
+
+    # winner(self, name, i): are used to display winner...!
 
     def winner(self, name, i):
         print("||===================    Winner    ===================||")
@@ -77,22 +75,22 @@ class SLGAME:
         self.players_pos.pop(i)
         if self.players_count == 0:
             self.result()
-    
-    ## result(self): are used to display Result...!
+
+    # result(self): are used to display Result...!
 
     def result(self):
         print("___________________ RESULT _________________")
         print()
         for x in range(len(self.winners)):
-         print(f"{x+1} Winner {self.winners[x]}.")
+            print(f"{x+1} Winner {self.winners[x]}.")
         print()
         print(self.winners)
         print()
         print(SLGAME.BYE)
         print()
         exit()
-    
-    ## turns(self): are used to rotate turns between players ...!
+
+    # turns(self): are used to rotate turns between players ...!
 
     def turns(self):
         i = 0
@@ -111,8 +109,8 @@ class SLGAME:
                 if fpos != True:
                     self.players_pos[i] = fpos
                 i += 1
-    
-## move(self, new_val, old_val, name, i): are used to move the position of players ...!
+
+# move(self, new_val, old_val, name, i): are used to move the position of players ...!
 
     def move(self, new_val, old_val, name, i):
         new_pos = new_val + old_val
@@ -140,8 +138,8 @@ class SLGAME:
                 return True
             else:
                 return new_pos
-    
-    ## main(self): Main Method Starting of Execution ...!
+
+    # main(self): Main Method Starting of Execution ...!
 
     def main(self):
         print(SLGAME.WELCOME)
@@ -160,6 +158,7 @@ class SLGAME:
             while self.decision != True:
                 self.turns()
 
-## Object Creation and call main() ...!
+
+# Object Creation and call main() ...!
 SL = SLGAME()
 SL.main()
